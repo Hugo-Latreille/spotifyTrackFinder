@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reducer from "./reducer";
 import APImiddleware from "./APImiddleware";
-import { createStore } from "redux";
+
 
 const store = configureStore({
   reducer,

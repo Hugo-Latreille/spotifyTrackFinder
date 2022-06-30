@@ -1,27 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Input } from 'semantic-ui-react';
+import { Input } from "semantic-ui-react";
+import { setAccessToken } from "../../store/actions";
 
-import './login.scss';
+import "./login.scss";
 
-const Login = ({
-  accessToken, setAccessToken,
-}) => (
-  <Input
-    className="login"
-    icon="lock open"
-    placeholder="Access token"
-    value={accessToken}
-    onChange={() => {
-      setAccessToken(accessToken);
-    }}
-  />
-);
+const Login = () => {
+  const accessToken = useSelector((state) => state.accessToken);
+  const dispatch = useDispatch();
 
-Login.propTypes = {
-  accessToken: PropTypes.string.isRequired,
-  setAccessToken: PropTypes.func.isRequired,
+  return (
+    <Input
+      className="login"
+      icon="lock open"
+      placeholder="Access token"
+      value={accessToken}
+      onChange={(e) => dispatch(setAccessToken(e.target.value))}
+    />
+  );
 };
 
 export default Login;

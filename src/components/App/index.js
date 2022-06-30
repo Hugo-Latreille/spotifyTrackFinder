@@ -1,5 +1,5 @@
 // == Import npm
-import React, { useState } from "react";
+import React from "react";
 
 import Login from "src/components/Login";
 import Search from "src/components/Search";
@@ -10,13 +10,11 @@ import "./app.scss";
 
 // == Composant
 const App = () => {
-  const [token, setToken] = useState("");
-
   return (
     <div className="app">
-      <Login accessToken={token} setAccessToken={setToken} />
+      <Login />
       <Search placeholder="Chercher une chanson" />
-      <TrackResults results={trackSearch} />
+      <TrackResults />
     </div>
   );
 };

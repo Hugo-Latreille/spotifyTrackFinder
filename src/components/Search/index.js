@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Input, Form, Image } from "semantic-ui-react";
 import logoSpotify from "src/assets/logo_spotify.png";
-import { setSearchValue } from "../../store/actions";
+import { setSearchValue, submitSearch } from "../../store/actions";
 import "./search.scss";
 
 const SearchBar = ({ placeholder }) => {
@@ -12,8 +12,7 @@ const SearchBar = ({ placeholder }) => {
   return (
     <>
       <Image centered size="medium" src={logoSpotify} />
-      <Form className="search__form">
-        {/* Champ controlé classique, mais avec un <Input> de semantic ui */}
+      <Form className="search__form" onSubmit={() => dispatch(submitSearch())}>
         <Input
           fluid
           icon="search"
