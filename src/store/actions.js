@@ -2,6 +2,9 @@ export const SET_SEARCH_VALUE = "SET_SEARCH_VALUE";
 export const SET_ACCESS_TOKEN = "SET_ACCESS_TOKEN";
 export const SUBMIT_SEARCH = "SUBMIT_SEARCH";
 export const SET_SEARCH_RESULTS = "SET_SEARCH_RESULTS";
+export const LOAD_MORE = "LOAD_MORE";
+export const LOAD_MORE_API = "LOAD_MORE_API";
+export const LOAD_MORE_SUCCESS = "LOAD_MORE_SUCCESS";
 
 export const setSearchValue = (value) => ({
   type: SET_SEARCH_VALUE,
@@ -19,4 +22,14 @@ export const submitSearch = () => ({
 export const setSearchResults = (value) => ({
   type: SET_SEARCH_RESULTS,
   value,
+});
+export const loadMore = () => ({
+  type: LOAD_MORE,
+});
+export const loadMoreAPI = () => ({
+  type: LOAD_MORE_API,
+});
+export const loadMoreSuccess = (data) => ({
+  type: LOAD_MORE_SUCCESS,
+  data,
 });

@@ -1,4 +1,6 @@
 import {
+  LOAD_MORE,
+  LOAD_MORE_SUCCESS,
   SET_ACCESS_TOKEN,
   SET_SEARCH_RESULTS,
   SET_SEARCH_VALUE,
@@ -11,6 +13,7 @@ export const initialState = {
   submitSearch: "",
   accessToken: "",
   searchResults: trackSearch,
+  searchOffset: 0,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -30,11 +33,31 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         searchValue: "",
         submitSearch: state.searchValue,
+        searchOffset: 0,
       };
     case SET_SEARCH_RESULTS:
       return {
         ...state,
         searchResults: action.value,
+      };
+    case LOAD_MORE:
+      return {
+        ...state,
+        searchOffset: state.searchOffset + 20,
+      };
+    case LOAD_MORE_SUCCESS:
+      return {
+        ...state,
+        searchResults: {
+          ...state.searchResults,
+          tracks: {
+            ...state.searchResults.tracks,
+            items: [
+              ...state.searchResults.tracks.items,
+              ...action.data.tracks.items,
+            ],
+          },
+        },
       };
     default:
       return state;

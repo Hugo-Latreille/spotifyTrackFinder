@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Icon, Button } from 'semantic-ui-react';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Icon, Button } from "semantic-ui-react";
 
 // un hook custom pour gérer l'audio
 const useAudio = (url) => {
@@ -12,16 +12,15 @@ const useAudio = (url) => {
   useEffect(() => {
     if (playing) {
       audio.play();
-    }
-    else {
+    } else {
       audio.pause();
     }
   }, [playing]);
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
+    audio.addEventListener("ended", () => setPlaying(false));
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
+      audio.removeEventListener("ended", () => setPlaying(false));
     };
   }, []);
 
@@ -33,14 +32,14 @@ const AudioPlayer = ({ url }) => {
 
   return (
     <Button onClick={toggle} icon labelPosition="left">
-      <Icon name={playing ? 'pause' : 'play'} />
-      {playing ? 'Pause' : 'Play'}
+      <Icon name={playing ? "pause" : "play"} />
+      {playing ? "Pause" : "Play"}
     </Button>
   );
 };
 
 AudioPlayer.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
 };
 
 export default AudioPlayer;
