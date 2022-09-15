@@ -13,11 +13,11 @@ const APImiddleware = (store) => (next) => async (action) => {
     try {
       const config = {
         method: "get",
-        url: `https://api.spotify.com/v1/search?q=${state.searchValue}&type=track&limit=20&offset=0`,
+        url: `https://api.spotify.com/v1/search?q=${state.searchValue}&type=${state.searchType}&limit=20&offset=0`,
         headers: {
           "Content-Type": "application/json",
           // Authorization: `Bearer ${state.accessToken}`,
-          Authorization: `Bearer BQBQE1qskOKLQvkQ7YrOngiyL-pyxeRnIpFUVW9EpnmB406NCNBm8l2h6k9aejV74bJYkFr667uLuBtihJBp7bCVYM_ClJZ0uc86EwQ4QbH-RxDYWdmkF3WmTSEJEPSQMmU-Co6wJOd-44J3zzd0liUox0-ZQeBzydS_8HpW75Y`,
+          Authorization: `Bearer BQBHzGiX0Hcmzr96HNnubv2SNtwGQShEkObfBRym51bQ1UvtzQAVAHImm0yd-V3iFEBbXh6XIp0LToB8ZlL3g8PaUhYgv8qLNBxNRO-_4spgoEidCocytVNyNkAmRHsFEeOor9o9DjUxNywfBIF8RdWWDnuePAWETP0SS2le94g`,
         },
       };
 
@@ -34,12 +34,12 @@ const APImiddleware = (store) => (next) => async (action) => {
     try {
       const config = {
         method: "get",
-        url: `https://api.spotify.com/v1/search?q=${state.submitSearch}&type=track&limit=20&offset=${state.searchOffset}`,
+        url: `https://api.spotify.com/v1/search?q=${state.submitSearch}&type=${state.searchType}&limit=20&offset=${state.searchOffset}`,
         // url: state.searchResults.tracks.next,
         headers: {
           "Content-Type": "application/json",
           // Authorization: `Bearer ${state.accessToken}`,
-          Authorization: `Bearer BQBQE1qskOKLQvkQ7YrOngiyL-pyxeRnIpFUVW9EpnmB406NCNBm8l2h6k9aejV74bJYkFr667uLuBtihJBp7bCVYM_ClJZ0uc86EwQ4QbH-RxDYWdmkF3WmTSEJEPSQMmU-Co6wJOd-44J3zzd0liUox0-ZQeBzydS_8HpW75Y`,
+          Authorization: `Bearer BQBHzGiX0Hcmzr96HNnubv2SNtwGQShEkObfBRym51bQ1UvtzQAVAHImm0yd-V3iFEBbXh6XIp0LToB8ZlL3g8PaUhYgv8qLNBxNRO-_4spgoEidCocytVNyNkAmRHsFEeOor9o9DjUxNywfBIF8RdWWDnuePAWETP0SS2le94g`,
         },
       };
       const { data } = await axios(config);

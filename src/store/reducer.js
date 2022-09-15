@@ -3,6 +3,7 @@ import {
   LOAD_MORE_SUCCESS,
   SET_ACCESS_TOKEN,
   SET_SEARCH_RESULTS,
+  SET_SEARCH_TYPE,
   SET_SEARCH_VALUE,
   SUBMIT_SEARCH,
 } from "./actions";
@@ -14,6 +15,7 @@ export const initialState = {
   accessToken: "",
   searchResults: trackSearch,
   searchOffset: 0,
+  searchType: "",
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -39,6 +41,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchResults: action.value,
+      };
+    case SET_SEARCH_TYPE:
+      return {
+        ...state,
+        searchType: action.value.pathname === "/tracks" ? "track" : "artist",
       };
     case LOAD_MORE:
       return {

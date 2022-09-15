@@ -7,6 +7,8 @@ import TrackResults from "src/components/TrackResults";
 import trackSearch from "src/data/track_search";
 import "semantic-ui-css/semantic.min.css";
 import "./app.scss";
+import MenuBar from "../MenuBar";
+import { Routes, Route } from "react-router-dom";
 
 // == Composant
 const App = () => {
@@ -14,7 +16,11 @@ const App = () => {
     <div className="app">
       <Login />
       <Search placeholder="Chercher une chanson" />
-      <TrackResults />
+      <MenuBar />
+      <Routes>
+        <Route path="/tracks" element={<TrackResults />} />
+        <Route path="/artists" element={<TrackResults />} />
+      </Routes>
     </div>
   );
 };
